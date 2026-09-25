@@ -31,19 +31,28 @@ $schedules = $stmt->fetchAll();
       background: #fff;
     }
     .header-pdf {
-      text-align: center;
-      border-bottom: 2px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      border-bottom: 2px solid #1d4ed8;
       padding-bottom: 15px;
       margin-bottom: 20px;
+      text-align: center;
+    }
+    .logo-pdf {
+      height: 60px;
+      width: 60px;
+      object-fit: contain;
     }
     .header-pdf h1 {
       margin: 0 0 5px 0;
-      font-size: 24px;
-      color: #1e293b;
+      font-size: 22px;
+      color: #1e3a8a;
     }
     .header-pdf p {
       margin: 0;
-      font-size: 14px;
+      font-size: 13px;
       color: #64748b;
     }
     table {
@@ -59,14 +68,14 @@ $schedules = $stmt->fetchAll();
     }
     th {
       background-color: #f1f5f9;
-      color: #334155;
+      color: #1e293b;
       font-weight: bold;
     }
     tr:nth-child(even) {
       background-color: #f8fafc;
     }
     .btn-print {
-      background: #4f46e5;
+      background: #1d4ed8;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -74,6 +83,7 @@ $schedules = $stmt->fetchAll();
       cursor: pointer;
       border-radius: 4px;
       margin-bottom: 15px;
+      font-weight: bold;
     }
     @media print {
       .btn-print { display: none; }
@@ -86,8 +96,12 @@ $schedules = $stmt->fetchAll();
   <button onclick="window.print()" class="btn-print">🖨️ Save as PDF / Print Document</button>
 
   <div class="header-pdf">
-    <h1>OFFICIAL EXAMINATION TIMETABLE</h1>
-    <p>Academic Session Schedule | Generated on: <?php echo date('F d, Y h:i A'); ?></p>
+    <img src="images/logo.png" alt="IMT/UNN Logo" class="logo-pdf">
+    <div>
+      <h1>INSTITUTE OF MANAGEMENT AND TECHNOLOGY (IMT), ENUGU</h1>
+      <p style="font-size: 14px; font-weight: bold; color: #1d4ed8; margin-bottom: 3px;">In Affiliation With University of Nigeria, Nsukka (UNN)</p>
+      <p>OFFICIAL EXAMINATION TIMETABLE | Generated on: <?php echo date('F d, Y h:i A'); ?></p>
+    </div>
   </div>
 
   <table>
@@ -113,7 +127,7 @@ $schedules = $stmt->fetchAll();
               <small>(<?php echo date('h:i A', strtotime($row['start_time'])) . ' - ' . date('h:i A', strtotime($row['end_time'])); ?>)</small>
             </td>
             <td>
-              <strong><?php echo htmlspecialchars($row['course_code']); ?></strong><br>
+              <strong style="color: #1d4ed8;"><?php echo htmlspecialchars($row['course_code']); ?></strong><br>
               <?php echo htmlspecialchars($row['course_title']); ?>
             </td>
             <td><?php echo htmlspecialchars($row['department']); ?></td>
