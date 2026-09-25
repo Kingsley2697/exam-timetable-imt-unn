@@ -5,7 +5,7 @@
 
 <footer class="footer">
   <div class="footer-container">
-    <p>&copy; <?php echo date('Y'); ?> Automated Exam Timetable Scheduling System. All rights reserved.</p>
+    <p>IMT-UNN @<?php echo date('Y'); ?> automated exam time table scheduling system. All right reserved</p>
   </div>
 </footer>
 
