@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `halls` (
 -- Table structure for exam periods (Date and Time slots)
 CREATE TABLE IF NOT EXISTS `periods` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
-  `period_name` VARCHAR(100) NOT NULL, -- e.g., Morning Session 1
+  `period_name` VARCHAR(100) NOT NULL,
   `exam_date` DATE NOT NULL,
   `start_time` TIME NOT NULL,
   `end_time` TIME NOT NULL,
@@ -59,34 +59,44 @@ CREATE TABLE IF NOT EXISTS `timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Seed Default Admin Account (Username: admin, Password: admin123)
--- Password hashed with PASSWORD_BCRYPT
 INSERT INTO `users` (`username`, `password`, `full_name`, `email`)
 VALUES ('admin', '$2y$10$wT0vR3j0x4B3XQvW0Z8q7uWdYvX/Z6qQ5j4f8K9L0M1N2O3P4Q5R6', 'System Administrator', 'admin@example.com')
 ON DUPLICATE KEY UPDATE `id`=`id`;
 
--- Seed Sample Examination Halls
+-- Seed 10 Active Examination Halls
 INSERT INTO `halls` (`hall_name`, `building`, `capacity`, `status`) VALUES
 ('Main Auditorium', 'Block A - Ground Floor', 250, 'active'),
-('Hall 101', 'Science Complex', 80, 'active'),
-('Hall 102', 'Science Complex', 80, 'active'),
-('ICT Lab 1', 'Technology Wing', 60, 'active'),
-('E-Library Center', 'Central Library', 120, 'active')
+('Hall 101', 'Science Complex', 120, 'active'),
+('Hall 102', 'Science Complex', 120, 'active'),
+('Hall 103', 'Science Complex', 100, 'active'),
+('ICT Lab 1', 'Technology Wing', 80, 'active'),
+('ICT Lab 2', 'Technology Wing', 80, 'active'),
+('E-Library Center', 'Central Library', 150, 'active'),
+('Multipurpose Hall A', 'Main Campus', 200, 'active'),
+('Multipurpose Hall B', 'Main Campus', 200, 'active'),
+('Engineering Lecture Theater', 'Engineering Block', 180, 'active')
 ON DUPLICATE KEY UPDATE `id`=`id`;
 
--- Seed Sample Exam Periods
+-- Seed Exam Periods (3 Hours Per Paper, 2 Papers Per Day: Morning 9:00 AM - 12:00 PM and Night 5:00 PM - 8:00 PM)
 INSERT INTO `periods` (`period_name`, `exam_date`, `start_time`, `end_time`) VALUES
-('Morning Session 1', '2026-10-12', '09:00:00', '11:00:00'),
-('Afternoon Session 1', '2026-10-12', '13:00:00', '15:00:00'),
-('Morning Session 2', '2026-10-13', '09:00:00', '11:00:00'),
-('Afternoon Session 2', '2026-10-13', '13:00:00', '15:00:00'),
-('Morning Session 3', '2026-10-14', '09:00:00', '11:00:00')
+('Morning Session (3 Hours)', '2026-10-12', '09:00:00', '12:00:00'),
+('Night Session (3 Hours)', '2026-10-12', '17:00:00', '20:00:00'),
+('Morning Session (3 Hours)', '2026-10-13', '09:00:00', '12:00:00'),
+('Night Session (3 Hours)', '2026-10-13', '17:00:00', '20:00:00'),
+('Morning Session (3 Hours)', '2026-10-14', '09:00:00', '12:00:00'),
+('Night Session (3 Hours)', '2026-10-14', '17:00:00', '20:00:00'),
+('Morning Session (3 Hours)', '2026-10-15', '09:00:00', '12:00:00'),
+('Night Session (3 Hours)', '2026-10-15', '17:00:00', '20:00:00')
 ON DUPLICATE KEY UPDATE `id`=`id`;
 
--- Seed Sample Courses
+-- Seed 8 Registered Academic Courses
 INSERT INTO `courses` (`course_code`, `course_title`, `department`, `student_count`) VALUES
 ('CS101', 'Introduction to Computer Science', 'Computer Science', 210),
 ('MTH201', 'Linear Algebra & Calculus', 'Mathematics', 150),
 ('PHY102', 'General Physics II', 'Physics', 75),
 ('ENG101', 'Technical Communication', 'Humanities', 110),
-('CHM103', 'Organic Chemistry Basics', 'Chemistry', 55)
+('CHM103', 'Organic Chemistry Basics', 'Chemistry', 65),
+('STA111', 'Statistics for Engineers', 'Mathematics', 130),
+('ECE204', 'Electrical Circuit Theory', 'Electrical Engineering', 95),
+('GST102', 'Use of English & Communication', 'General Studies', 240)
 ON DUPLICATE KEY UPDATE `id`=`id`;
