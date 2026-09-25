@@ -86,17 +86,45 @@ INSERT INTO `periods` (`period_name`, `exam_date`, `start_time`, `end_time`) VAL
 ('Morning Session (3 Hours)', '2026-10-14', '09:00:00', '12:00:00'),
 ('Night Session (3 Hours)', '2026-10-14', '17:00:00', '20:00:00'),
 ('Morning Session (3 Hours)', '2026-10-15', '09:00:00', '12:00:00'),
-('Night Session (3 Hours)', '2026-10-15', '17:00:00', '20:00:00')
+('Night Session (3 Hours)', '2026-10-15', '17:00:00', '20:00:00'),
+('Morning Session (3 Hours)', '2026-10-16', '09:00:00', '12:00:00'),
+('Night Session (3 Hours)', '2026-10-16', '17:00:00', '20:00:00')
 ON DUPLICATE KEY UPDATE `id`=`id`;
 
--- Seed 8 Registered Academic Courses
+-- Seed Registered Courses across Computer Science, Marketing, Banking & Finance, Public Admin, and Mass Comm
 INSERT INTO `courses` (`course_code`, `course_title`, `department`, `student_count`) VALUES
-('CS101', 'Introduction to Computer Science', 'Computer Science', 210),
-('MTH201', 'Linear Algebra & Calculus', 'Mathematics', 150),
-('PHY102', 'General Physics II', 'Physics', 75),
-('ENG101', 'Technical Communication', 'Humanities', 110),
-('CHM103', 'Organic Chemistry Basics', 'Chemistry', 65),
-('STA111', 'Statistics for Engineers', 'Mathematics', 130),
-('ECE204', 'Electrical Circuit Theory', 'Electrical Engineering', 95),
-('GST102', 'Use of English & Communication', 'General Studies', 240)
+-- Computer Science Courses
+('CSC101', 'Introduction to Computer Science & Programming', 'Computer Science', 220),
+('CSC102', 'Data Structures & Algorithms', 'Computer Science', 180),
+('CSC201', 'Object-Oriented Programming (C++/Java)', 'Computer Science', 160),
+('CSC202', 'Database Management Systems', 'Computer Science', 150),
+('CSC301', 'Operating Systems & Systems Programming', 'Computer Science', 140),
+('CSC302', 'Software Engineering & System Analysis', 'Computer Science', 130),
+('CSC401', 'Artificial Intelligence & Machine Learning', 'Computer Science', 110),
+('CSC402', 'Computer Networks & Cybersecurity', 'Computer Science', 125),
+
+-- Marketing Courses
+('MKT101', 'Principles of Marketing', 'Marketing', 175),
+('MKT201', 'Consumer Behavior & Market Analysis', 'Marketing', 140),
+('MKT301', 'Digital Marketing & E-Commerce', 'Marketing', 120),
+('MKT401', 'Strategic Brand Management', 'Marketing', 95),
+
+-- Banking and Finance Courses
+('BFN101', 'Introduction to Banking & Financial Systems', 'Banking and Finance', 190),
+('BFN201', 'Corporate Finance & Investment Analysis', 'Banking and Finance', 150),
+('BFN301', 'Financial Institutions & Markets', 'Banking and Finance', 130),
+('BFN401', 'International Finance & Risk Management', 'Banking and Finance', 105),
+
+-- Public Administration Courses
+('PAD101', 'Elements of Public Administration', 'Public Administration', 200),
+('PAD201', 'Administrative Theory & Practice', 'Public Administration', 165),
+('PAD301', 'Public Personnel Management', 'Public Administration', 145),
+('PAD401', 'Public Policy Analysis & Implementation', 'Public Administration', 115),
+
+-- Mass Communication Courses
+('MAC101', 'Introduction to Mass Communication', 'Mass Communication', 210),
+('MAC201', 'Print Media Production & Journalism', 'Mass Communication', 170),
+('MAC301', 'Broadcast Media & Radio Production', 'Mass Communication', 140),
+('MAC401', 'Media Law, Ethics & Public Relations', 'Mass Communication', 120)
+
 ON DUPLICATE KEY UPDATE `id`=`id`;
