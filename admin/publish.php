@@ -23,7 +23,7 @@ $totalCount = $pdo->query("SELECT COUNT(*) FROM timetable")->fetchColumn();
 require_once '../includes/header.php';
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<div class="page-header">
   <h2>🚀 Timetable Publishing Center</h2>
   <a href="dashboard.php" class="btn btn-secondary">&larr; Back to Dashboard</a>
 </div>
@@ -35,7 +35,7 @@ require_once '../includes/header.php';
 <div class="form-card" style="max-width: 600px; text-align: center;">
   <h3>Current Status Overview</h3>
   
-  <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0;">
+  <div class="button-group" style="justify-content: center; gap: 2rem; margin: 1.5rem 0;">
     <div>
       <div style="font-size: 2rem; font-weight: 700; color: var(--accent-success);"><?php echo $publishedCount; ?></div>
       <div style="font-size: 0.85rem; color: var(--text-muted);">Published Entries</div>
@@ -50,7 +50,7 @@ require_once '../includes/header.php';
     </div>
   </div>
 
-  <form action="publish.php" method="POST" style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+  <form action="publish.php" method="POST" class="button-group" style="justify-content: center; margin-top: 2rem;">
     <?php if ($draftCount > 0 || $totalCount > 0): ?>
       <button type="submit" name="action_publish" class="btn btn-success" style="padding: 0.8rem 1.8rem;">
         🌐 Publish Timetable Now

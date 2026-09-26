@@ -13,7 +13,7 @@ $timetableCount = $pdo->query("SELECT COUNT(*) FROM timetable")->fetchColumn();
 $publishedCount = $pdo->query("SELECT COUNT(*) FROM timetable WHERE status='published'")->fetchColumn();
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div class="page-header" style="margin-bottom: 2rem;">
   <div>
     <h2>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name'] ?? 'Admin'); ?> 👋</h2>
     <p style="color: var(--text-muted);">Exam Timetable Management & Scheduling Dashboard</p>
@@ -62,7 +62,7 @@ $publishedCount = $pdo->query("SELECT COUNT(*) FROM timetable WHERE status='publ
 </div>
 
 <!-- Admin Quick Navigation Links -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+<div class="quick-links-grid">
   <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
     <h3>🏛️ Hall Management</h3>
     <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0.5rem 0 1rem;">Add new exam halls, set seating capacity, building locations, and activate venues.</p>

@@ -159,7 +159,7 @@ $currentSchedule = $pdo->query("
 require_once '../includes/header.php';
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<div class="page-header">
   <div>
     <h2>⚡ Timetable Scheduling & Allocation Generator</h2>
     <p style="color: var(--text-muted);">Schedule individual courses one-by-one by choice, or run auto-scheduler for all courses.</p>
@@ -174,7 +174,7 @@ require_once '../includes/header.php';
   <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
 <?php endif; ?>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+<div class="content-grid-2">
   <!-- Section 1: Single Course Choice Assignment -->
   <div class="form-card" style="margin: 0; max-width: 100%;">
     <div class="form-header">

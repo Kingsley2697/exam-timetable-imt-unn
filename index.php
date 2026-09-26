@@ -13,7 +13,7 @@ $publishedCount = $pdo->query("SELECT COUNT(*) FROM timetable WHERE status='publ
 <div class="hero-section">
   <h1 class="hero-title">Automated Examination Timetable Scheduler</h1>
   <p class="hero-subtitle">Smart collision-free scheduling for academic examinations, hall allocations, and time slot management.</p>
-  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+  <div class="button-group" style="justify-content: center; margin-top: 1rem;">
     <a href="view_timetable.php" class="btn btn-primary">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
       View Official Timetable

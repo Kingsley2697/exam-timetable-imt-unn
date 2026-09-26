@@ -37,7 +37,11 @@ $logoutPath = $inAdmin ? 'logout.php' : 'admin/logout.php';
       <span>IMT-UNN Schedule</span>
     </a>
 
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="<?php echo $homePath; ?>" class="<?php echo $currentPage == 'index.php' ? 'active' : ''; ?>">Home</a></li>
       <li><a href="<?php echo $viewPath; ?>" class="<?php echo $currentPage == 'view_timetable.php' ? 'active' : ''; ?>">View Timetable</a></li>
       

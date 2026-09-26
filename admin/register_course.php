@@ -42,7 +42,7 @@ $courses = $pdo->query("SELECT * FROM courses ORDER BY course_code ASC")->fetchA
 require_once '../includes/header.php';
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<div class="page-header">
   <h2>📚 Course Registry & Enrollment</h2>
   <a href="dashboard.php" class="btn btn-secondary">&larr; Back to Dashboard</a>
 </div>
@@ -54,7 +54,7 @@ require_once '../includes/header.php';
   <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
 <?php endif; ?>
 
-<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+<div class="management-grid">
   <!-- Add Course Form -->
   <div class="form-card" style="margin: 0;">
     <div class="form-header">

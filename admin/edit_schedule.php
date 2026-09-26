@@ -55,7 +55,7 @@ $schedules = $pdo->query("
 require_once '../includes/header.php';
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<div class="page-header">
   <h2>⚙️ Edit & Adjust Examination Schedules</h2>
   <a href="dashboard.php" class="btn btn-secondary">&larr; Back to Dashboard</a>
 </div>

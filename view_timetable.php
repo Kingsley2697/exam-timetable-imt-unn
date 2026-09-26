@@ -26,12 +26,12 @@ $stmt->execute();
 $schedules = $stmt->fetchAll();
 ?>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+<div class="page-header">
   <div>
     <h2>Official Examination Timetable</h2>
     <p style="color: var(--text-muted);">View examination dates, allotted venues, and time slots.</p>
   </div>
-  <div class="no-print" style="display: flex; gap: 0.75rem;">
+  <div class="page-header-actions no-print">
     <button onclick="printTimetable()" class="btn btn-secondary">
       🖨️ Print Timetable
     </button>
@@ -46,7 +46,7 @@ $schedules = $stmt->fetchAll();
     <input type="text" id="tableSearch" class="form-control" placeholder="Search by course code, title, venue, date...">
   </div>
 
-  <div style="display: flex; gap: 0.5rem; align-items: center;">
+  <div class="filter-group">
     <label for="deptFilter" style="font-size: 0.9rem; color: var(--text-muted);">Department:</label>
     <select id="deptFilter" class="form-control" style="width: 200px;">
       <option value="">All Departments</option>
