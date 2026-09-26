@@ -11,18 +11,21 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ---- UPDATE THESE VALUES ON YOUR HOSTING ----
-$host    = 'localhost';           // Usually 'localhost' on 000WebHost
-$db      = 'exam_timetable_db';  // Your database name from 000WebHost panel
-$user    = 'root';               // Your database username from 000WebHost panel
-$pass    = '';                   // Your database password from 000WebHost panel
+// ---- DATABASE ENVIRONMENT VARIABLES (with local defaults) ----
+// On Render, set DB_HOST, DB_NAME, DB_USER, DB_PASS and optionally DB_PORT
+// in the service Environment settings when using a MySQL database.
+$host    = getenv('DB_HOST') ?: 'localhost';
+$db      = getenv('DB_NAME') ?: 'exam_timetable_db';
+$user    = getenv('DB_USER') ?: 'root';
+$pass    = getenv('DB_PASS') ?: '';
+$port    = getenv('DB_PORT') ?: '3306';
 $charset = 'utf8mb4';
 // ---------------------------------------------
 
 $pdo = null;
 
 try {
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

@@ -1,0 +1,7 @@
+.git
+.gitignore
+*.sqlite
+*.db
+*.log
+.DS_Store
+Thumbs.db
