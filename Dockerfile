@@ -1,9 +1,12 @@
 FROM php:8.3-apache
 
-# Database drivers used by includes/db.php, plus Apache rewrite support for
-# future clean URLs or .htaccess rules.
-RUN docker-php-ext-install pdo_mysql pdo_sqlite \
-    && a2enmod rewrite
+# SQLite development files are required to compile the PDO SQLite driver.
+# The installed drivers match the MySQL and SQLite connections in db.php.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libsqlite3-dev \
+    && docker-php-ext-install pdo_mysql pdo_sqlite \
+    && a2enmod rewrite \
+    && rm -rf /var/lib/apt/lists/*
 
 # This application has index.php at its repository root, so Apache's default
 # document root is deliberately used as the application document root.
