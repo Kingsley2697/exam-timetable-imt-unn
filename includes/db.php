@@ -88,13 +88,9 @@ try {
             );
         ");
 
-        // Seed default data if empty
-        $stmt = $pdo->query("SELECT COUNT(*) FROM users");
+        // Seed timetable data once, without creating a public default administrator.
+        $stmt = $pdo->query("SELECT COUNT(*) FROM halls");
         if ($stmt->fetchColumn() == 0) {
-            $hashedPassword = password_hash('admin123', PASSWORD_DEFAULT);
-            $pdo->exec("INSERT INTO users (username, password, full_name, email)
-                        VALUES ('admin', '$hashedPassword', 'System Administrator', 'admin@imt-unn.edu.ng')");
-
             $pdo->exec("INSERT INTO halls (hall_name, building, capacity, status) VALUES
                 ('Main Auditorium', 'Block A - Ground Floor', 250, 'active'),
                 ('Hall 101', 'Science Complex', 120, 'active'),

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$login_input, $login_input]);
         $user = $stmt->fetch();
 
-        if ($user && (password_verify($password, $user['password']) || $password === 'admin123')) {
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['full_name'] = $user['full_name'];
@@ -58,16 +58,6 @@ require_once '../includes/header.php';
     </button>
   </form>
 
-  <div style="text-align: center; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
-    <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">Don't have an admin account?</p>
-    <a href="register.php" class="btn btn-secondary" style="width: 100%; font-weight: 600;">
-      ✨ Create New Admin Account / Sign Up
-    </a>
-  </div>
-  
-  <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
-    Demo credentials: <strong>admin</strong> / <strong>admin123</strong>
-  </div>
 </div>
 
 <?php require_once '../includes/footer.php'; ?>

@@ -77,13 +77,6 @@ CREATE TABLE IF NOT EXISTS `timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =============================================================
--- SEED DATA: Default Admin Account
--- Login: admin / admin123
--- =============================================================
-INSERT IGNORE INTO `users` (`username`, `password`, `full_name`, `email`) VALUES
-('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'System Administrator', 'admin@imt-unn.edu.ng');
-
--- =============================================================
 -- SEED DATA: 10 Active Examination Halls
 -- =============================================================
 INSERT IGNORE INTO `halls` (`hall_name`, `building`, `capacity`, `status`) VALUES
@@ -152,5 +145,4 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 -- =============================================================
 -- DONE! Your database is ready.
--- Admin login: username = admin | password = admin123
 -- =============================================================
