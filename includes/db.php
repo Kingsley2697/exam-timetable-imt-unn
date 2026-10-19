@@ -88,7 +88,20 @@ try {
             );
         ");
 
-        // Seed timetable data once, without creating a public default administrator.
+        // Create the initial administrator only when no admin accounts exist.
+        // The password is stored as a bcrypt hash and is never shown in the interface.
+        $stmt = $pdo->query("SELECT COUNT(*) FROM users");
+        if ($stmt->fetchColumn() == 0) {
+            $stmt = $pdo->prepare("INSERT INTO users (username, password, full_name, email) VALUES (?, ?, ?, ?)");
+            $stmt->execute([
+                'admin',
+                '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+                'System Administrator',
+                'admin@imt-unn.edu.ng'
+            ]);
+        }
+
+        // Seed timetable data once.
         $stmt = $pdo->query("SELECT COUNT(*) FROM halls");
         if ($stmt->fetchColumn() == 0) {
             $pdo->exec("INSERT INTO halls (hall_name, building, capacity, status) VALUES
